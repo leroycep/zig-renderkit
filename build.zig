@@ -26,6 +26,12 @@ pub fn addRenderKitToArtifact(b: *Builder, exe: *std.build.LibExeObjStep, target
     if (target.isDarwin()) addMetalToArtifact(b, exe, target, prefix_path);
     addOpenGlToArtifact(exe, target);
 
+    if (std.meta.eql(target.cpu_arch, .wasm32)) {
+        // TODO: This is really hacky. Think of a better API. Specifically for the `www/` part
+        const installJSBindings = b.addInstallFile(prefix_path ++ "renderkit/renderer/webgl/renderkit.js", "www/renderkit.js");
+        exe.step.dependOn(&installJSBindings.step);
+    }
+
     exe.addPackage(getRenderKitPackage(prefix_path));
 }
 

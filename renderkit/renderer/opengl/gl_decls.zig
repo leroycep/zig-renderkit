@@ -26,106 +26,304 @@ pub const GLuint64EXT = u64;
 pub const GLdouble = f64;
 
 const Funcs = struct {
-    glEnable: fn (GLenum) void,
-    glDisable: fn (GLenum) void,
-    glBlendFunc: fn (GLenum, GLenum) void,
-    glBlendFuncSeparate: fn (GLenum, GLenum, GLenum, GLenum) void,
-    glBlendEquationSeparate: fn (GLenum, GLenum) void,
-    glBlendColor: fn (GLfloat, GLfloat, GLfloat, GLfloat) void,
-    glPolygonMode: fn (GLenum, GLenum) void,
-    glDepthMask: fn (GLboolean) void,
-    glDepthFunc: fn (GLenum) void,
-    glStencilFunc: fn (GLenum, GLint, GLuint) void,
-    glStencilFuncSeparate: fn (GLenum, GLenum, GLint, GLuint) void,
-    glStencilMask: fn (GLuint) void,
-    glStencilMaskSeparate: fn (GLenum, GLuint) void,
-    glStencilOp: fn (GLenum, GLenum, GLenum) void,
-    glStencilOpSeparate: fn (GLenum, GLenum, GLenum, GLenum) void,
-    glColorMask: fn (GLboolean, GLboolean, GLboolean, GLboolean) void,
+    glEnable: fn (GLenum) callconv(.C) void,
+    glDisable: fn (GLenum) callconv(.C) void,
+    glBlendFunc: fn (GLenum, GLenum) callconv(.C) void,
+    glBlendFuncSeparate: fn (GLenum, GLenum, GLenum, GLenum) callconv(.C) void,
+    glBlendEquationSeparate: fn (GLenum, GLenum) callconv(.C) void,
+    glBlendColor: fn (GLfloat, GLfloat, GLfloat, GLfloat) callconv(.C) void,
+    glPolygonMode: fn (GLenum, GLenum) callconv(.C) void,
+    glDepthMask: fn (GLboolean) callconv(.C) void,
+    glDepthFunc: fn (GLenum) callconv(.C) void,
+    glStencilFunc: fn (GLenum, GLint, GLuint) callconv(.C) void,
+    glStencilFuncSeparate: fn (GLenum, GLenum, GLint, GLuint) callconv(.C) void,
+    glStencilMask: fn (GLuint) callconv(.C) void,
+    glStencilMaskSeparate: fn (GLenum, GLuint) callconv(.C) void,
+    glStencilOp: fn (GLenum, GLenum, GLenum) callconv(.C) void,
+    glStencilOpSeparate: fn (GLenum, GLenum, GLenum, GLenum) callconv(.C) void,
+    glColorMask: fn (GLboolean, GLboolean, GLboolean, GLboolean) callconv(.C) void,
 
-    glViewport: fn (GLint, GLint, GLsizei, GLsizei) void,
-    glScissor: fn (GLint, GLint, GLsizei, GLsizei) void,
-    glGetString: fn (GLenum) [*c]const GLubyte,
-    glGetError: fn () GLenum,
-    glGetIntegerv: fn (GLenum, [*c]GLint) void,
-    glClearColor: fn (GLfloat, GLfloat, GLfloat, GLfloat) void,
-    glClearStencil: fn (GLint) void,
-    glClearDepth: fn (GLdouble) void,
-    glClear: fn (GLbitfield) void,
-    glGenBuffers: fn (n: GLsizei, buffers: [*c]GLuint) void,
-    glDeleteVertexArrays: fn (n: GLsizei, arrays: [*c]GLuint) void,
-    glDeleteBuffers: fn (n: GLsizei, buffers: [*]GLuint) void,
-    glGenVertexArrays: fn (n: GLsizei, arrays: [*c]GLuint) void,
-    glBindBuffer: fn (target: GLenum, buffer: GLuint) void,
-    glBufferData: fn (target: GLenum, size: GLsizeiptr, data: ?*const c_void, usage: GLenum) void,
-    glBufferSubData: fn (GLenum, GLintptr, GLsizeiptr, ?*const c_void) void,
+    glViewport: fn (GLint, GLint, GLsizei, GLsizei) callconv(.C) void,
+    glScissor: fn (GLint, GLint, GLsizei, GLsizei) callconv(.C) void,
+    glGetString: fn (GLenum) callconv(.C) [*c]const GLubyte,
+    glGetError: fn () callconv(.C) GLenum,
+    glGetIntegerv: fn (GLenum, [*c]GLint) callconv(.C) void,
+    glClearColor: fn (GLfloat, GLfloat, GLfloat, GLfloat) callconv(.C) void,
+    glClearStencil: fn (GLint) callconv(.C) void,
+    glClearDepth: fn (GLdouble) callconv(.C) void,
+    glClear: fn (GLbitfield) callconv(.C) void,
+    glGenBuffers: fn (n: GLsizei, buffers: [*c]GLuint) callconv(.C) void,
+    glDeleteVertexArrays: fn (n: GLsizei, arrays: [*c]GLuint) callconv(.C) void,
+    glDeleteBuffers: fn (n: GLsizei, buffers: [*]GLuint) callconv(.C) void,
+    glGenVertexArrays: fn (n: GLsizei, arrays: [*c]GLuint) callconv(.C) void,
+    glBindBuffer: fn (target: GLenum, buffer: GLuint) callconv(.C) void,
+    glBufferData: fn (target: GLenum, size: GLsizeiptr, data: ?*const c_void, usage: GLenum) callconv(.C) void,
+    glBufferSubData: fn (GLenum, GLintptr, GLsizeiptr, ?*const c_void) callconv(.C) void,
 
-    glCreateShader: fn (shader: GLenum) GLuint,
-    glShaderSource: fn (shader: GLuint, count: GLsizei, string: *[:0]const GLchar, length: ?*c_int) void,
-    glCompileShader: fn (shader: GLuint) void,
-    glDeleteShader: fn (GLuint) void,
+    glCreateShader: fn (shader: GLenum) callconv(.C) GLuint,
+    glShaderSource: fn (shader: GLuint, count: GLsizei, string: *[:0]const GLchar, length: ?*c_int) callconv(.C) void,
+    glCompileShader: fn (shader: GLuint) callconv(.C) void,
+    glDeleteShader: fn (GLuint) callconv(.C) void,
 
-    glCreateProgram: fn () GLuint,
-    glDeleteProgram: fn (GLuint) void,
-    glAttachShader: fn (program: GLuint, shader: GLuint) void,
-    glLinkProgram: fn (program: GLuint) void,
-    glGetProgramiv: fn (GLuint, GLenum, [*c]GLint) void,
-    glGetProgramInfoLog: fn (GLuint, GLsizei, [*c]GLsizei, [*c]GLchar) void,
-    glUseProgram: fn (program: GLuint) void,
-    glGetAttribLocation: fn (program: GLuint, name: [*:0]const GLchar) GLint,
-    glBindFragDataLocation: fn (program: GLuint, colorNumber: GLuint, name: [*:0]const GLchar) void,
-    glVertexAttribDivisor: fn (index: GLuint, divisor: GLuint) void,
-    glVertexAttribPointer: fn (index: GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: ?*const c_void) void,
-    glBindVertexArray: fn (array: GLuint) void,
+    glCreateProgram: fn () callconv(.C) GLuint,
+    glDeleteProgram: fn (GLuint) callconv(.C) void,
+    glAttachShader: fn (program: GLuint, shader: GLuint) callconv(.C) void,
+    glLinkProgram: fn (program: GLuint) callconv(.C) void,
+    glGetProgramiv: fn (GLuint, GLenum, [*c]GLint) callconv(.C) void,
+    glGetProgramInfoLog: fn (GLuint, GLsizei, [*c]GLsizei, [*c]GLchar) callconv(.C) void,
+    glUseProgram: fn (program: GLuint) callconv(.C) void,
+    glGetAttribLocation: fn (program: GLuint, name: [*:0]const GLchar) callconv(.C) GLint,
+    glBindFragDataLocation: fn (program: GLuint, colorNumber: GLuint, name: [*:0]const GLchar) callconv(.C) void,
+    glVertexAttribDivisor: fn (index: GLuint, divisor: GLuint) callconv(.C) void,
+    glVertexAttribPointer: fn (index: GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: ?*const c_void) callconv(.C) void,
+    glBindVertexArray: fn (array: GLuint) callconv(.C) void,
 
-    glGetShaderiv: fn (shader: GLuint, pname: GLenum, params: *GLint) void,
-    glEnableVertexAttribArray: fn (index: GLuint) void,
-    glGetShaderInfoLog: fn (shader: GLuint, maxLength: GLsizei, length: *GLsizei, infoLog: [*]GLchar) void,
+    glGetShaderiv: fn (shader: GLuint, pname: GLenum, params: *GLint) callconv(.C) void,
+    glEnableVertexAttribArray: fn (index: GLuint) callconv(.C) void,
+    glGetShaderInfoLog: fn (shader: GLuint, maxLength: GLsizei, length: *GLsizei, infoLog: [*]GLchar) callconv(.C) void,
 
-    glGetUniformLocation: fn (shader: GLuint, name: [*:0]const GLchar) GLint,
-    glUniform1i: fn (location: GLint, v0: GLint) void,
-    glUniform1iv: fn (GLint, GLsizei, [*c]const GLint) void,
-    glUniform1f: fn (location: GLint, v0: GLfloat) void,
-    glUniform1fv: fn (GLint, GLsizei, [*c]const GLfloat) void,
-    glUniform2fv: fn (GLint, GLsizei, [*c]const GLfloat) void,
-    glUniform3fv: fn (GLint, GLsizei, [*c]const GLfloat) void,
-    glUniform4fv: fn (GLint, GLsizei, [*c]const GLfloat) void,
-    glUniform3f: fn (location: GLint, v0: GLfloat, v1: GLfloat, v2: GLfloat) void,
-    glUniformMatrix3fv: fn (GLint, GLsizei, GLboolean, [*c]const GLfloat) void,
-    glUniformMatrix4fv: fn (location: GLint, count: GLsizei, transpose: GLboolean, value: *const GLfloat) void,
-    glUniformMatrix3x2fv: fn (GLint, GLsizei, GLboolean, [*c]const GLfloat) void,
+    glGetUniformLocation: fn (shader: GLuint, name: [*:0]const GLchar) callconv(.C) GLint,
+    glUniform1i: fn (location: GLint, v0: GLint) callconv(.C) void,
+    glUniform1iv: fn (GLint, GLsizei, [*c]const GLint) callconv(.C) void,
+    glUniform1f: fn (location: GLint, v0: GLfloat) callconv(.C) void,
+    glUniform1fv: fn (GLint, GLsizei, [*c]const GLfloat) callconv(.C) void,
+    glUniform2fv: fn (GLint, GLsizei, [*c]const GLfloat) callconv(.C) void,
+    glUniform3fv: fn (GLint, GLsizei, [*c]const GLfloat) callconv(.C) void,
+    glUniform4fv: fn (GLint, GLsizei, [*c]const GLfloat) callconv(.C) void,
+    glUniform3f: fn (location: GLint, v0: GLfloat, v1: GLfloat, v2: GLfloat) callconv(.C) void,
+    glUniformMatrix3fv: fn (GLint, GLsizei, GLboolean, [*c]const GLfloat) callconv(.C) void,
+    glUniformMatrix4fv: fn (location: GLint, count: GLsizei, transpose: GLboolean, value: *const GLfloat) callconv(.C) void,
+    glUniformMatrix3x2fv: fn (GLint, GLsizei, GLboolean, [*c]const GLfloat) callconv(.C) void,
 
-    glDrawElements: fn (GLenum, GLsizei, GLenum, ?*const c_void) void,
-    glDrawElementsInstanced: fn (GLenum, GLsizei, GLenum, ?*const c_void, GLsizei) void,
-    glDrawArrays: fn (GLenum, GLint, GLsizei) void,
+    glDrawElements: fn (GLenum, GLsizei, GLenum, ?*const c_void) callconv(.C) void,
+    glDrawElementsInstanced: fn (GLenum, GLsizei, GLenum, ?*const c_void, GLsizei) callconv(.C) void,
+    glDrawArrays: fn (GLenum, GLint, GLsizei) callconv(.C) void,
 
-    glGenFramebuffers: fn (GLsizei, [*c]GLuint) void,
-    glDeleteFramebuffers: fn (GLsizei, [*c]const GLuint) void,
-    glBindFramebuffer: fn (GLenum, GLuint) void,
-    glFramebufferTexture: fn (GLenum, GLenum, GLuint, GLint) void,
-    glDrawBuffers: fn (GLsizei, [*c]const GLenum) void,
-    glCheckFramebufferStatus: fn (GLenum) GLenum,
+    glGenFramebuffers: fn (GLsizei, [*c]GLuint) callconv(.C) void,
+    glDeleteFramebuffers: fn (GLsizei, [*c]const GLuint) callconv(.C) void,
+    glBindFramebuffer: fn (GLenum, GLuint) callconv(.C) void,
+    glFramebufferTexture: fn (GLenum, GLenum, GLuint, GLint) callconv(.C) void,
+    glDrawBuffers: fn (GLsizei, [*c]const GLenum) callconv(.C) void,
+    glCheckFramebufferStatus: fn (GLenum) callconv(.C) GLenum,
 
-    glGenRenderbuffers: fn (GLsizei, [*c]GLuint) void,
-    glDeleteRenderbuffers: fn (GLsizei, [*c]const GLuint) void,
-    glBindRenderbuffer: fn (GLenum, GLuint) void,
-    glRenderbufferStorage: fn (GLenum, GLenum, GLsizei, GLsizei) void,
-    glFramebufferRenderbuffer: fn (GLenum, GLenum, GLenum, GLuint) void,
+    glGenRenderbuffers: fn (GLsizei, [*c]GLuint) callconv(.C) void,
+    glDeleteRenderbuffers: fn (GLsizei, [*c]const GLuint) callconv(.C) void,
+    glBindRenderbuffer: fn (GLenum, GLuint) callconv(.C) void,
+    glRenderbufferStorage: fn (GLenum, GLenum, GLsizei, GLsizei) callconv(.C) void,
+    glFramebufferRenderbuffer: fn (GLenum, GLenum, GLenum, GLuint) callconv(.C) void,
 
-    glGenTextures: fn (GLsizei, [*c]GLuint) void,
-    glDeleteTextures: fn (GLsizei, [*c]const GLuint) void,
-    glBindTexture: fn (GLenum, GLuint) void,
-    glTexParameteri: fn (GLenum, GLenum, GLint) void,
-    glTexParameteriv: fn (GLenum, GLenum, [*c]const GLint) void,
-    glTexImage1D: fn (GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, ?*const c_void) void,
-    glTexImage2D: fn (GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, ?*const c_void) void,
-    glGenerateMipmap: fn (GLenum) void,
-    glActiveTexture: fn (GLenum) void,
+    glGenTextures: fn (GLsizei, [*c]GLuint) callconv(.C) void,
+    glDeleteTextures: fn (GLsizei, [*c]const GLuint) callconv(.C) void,
+    glBindTexture: fn (GLenum, GLuint) callconv(.C) void,
+    glTexParameteri: fn (GLenum, GLenum, GLint) callconv(.C) void,
+    glTexParameteriv: fn (GLenum, GLenum, [*c]const GLint) callconv(.C) void,
+    glTexImage1D: fn (GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, ?*const c_void) callconv(.C) void,
+    glTexImage2D: fn (GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, ?*const c_void) callconv(.C) void,
+    glGenerateMipmap: fn (GLenum) callconv(.C) void,
+    glActiveTexture: fn (GLenum) callconv(.C) void,
 };
 
 var gl: Funcs = undefined;
 
 pub fn loadFunctionsZig() void {
+    if (std.builtin.arch == .wasm32) {
+        const wasmEnv = struct {
+            extern fn glEnable(GLenum) callconv(.C) void;
+            extern fn glDisable(GLenum) callconv(.C) void;
+            extern fn glBlendFunc(GLenum, GLenum) callconv(.C) void;
+            extern fn glBlendFuncSeparate(GLenum, GLenum, GLenum, GLenum) callconv(.C) void;
+            extern fn glBlendEquationSeparate(GLenum, GLenum) callconv(.C) void;
+            extern fn glBlendColor(GLfloat, GLfloat, GLfloat, GLfloat) callconv(.C) void;
+            extern fn glPolygonMode(GLenum, GLenum) callconv(.C) void;
+            extern fn glDepthMask(GLboolean) callconv(.C) void;
+            extern fn glDepthFunc(GLenum) callconv(.C) void;
+            extern fn glStencilFunc(GLenum, GLint, GLuint) callconv(.C) void;
+            extern fn glStencilFuncSeparate(GLenum, GLenum, GLint, GLuint) callconv(.C) void;
+            extern fn glStencilMask(GLuint) callconv(.C) void;
+            extern fn glStencilMaskSeparate(GLenum, GLuint) callconv(.C) void;
+            extern fn glStencilOp(GLenum, GLenum, GLenum) callconv(.C) void;
+            extern fn glStencilOpSeparate(GLenum, GLenum, GLenum, GLenum) callconv(.C) void;
+            extern fn glColorMask(GLboolean, GLboolean, GLboolean, GLboolean) callconv(.C) void;
+
+            extern fn glViewport(GLint, GLint, GLsizei, GLsizei) callconv(.C) void;
+            extern fn glScissor(GLint, GLint, GLsizei, GLsizei) callconv(.C) void;
+            extern fn glGetString(GLenum) callconv(.C) [*c]const GLubyte;
+            extern fn glGetError() callconv(.C) GLenum;
+            extern fn glGetIntegerv(GLenum, [*c]GLint) callconv(.C) void;
+            extern fn glClearColor(GLfloat, GLfloat, GLfloat, GLfloat) callconv(.C) void;
+            extern fn glClearStencil(GLint) callconv(.C) void;
+            extern fn glClearDepth(GLdouble) callconv(.C) void;
+            extern fn glClear(GLbitfield) callconv(.C) void;
+            extern fn glGenBuffers(n: GLsizei, buffers: [*c]GLuint) callconv(.C) void;
+            extern fn glDeleteVertexArrays(n: GLsizei, arrays: [*c]GLuint) callconv(.C) void;
+            extern fn glDeleteBuffers(n: GLsizei, buffers: [*]GLuint) callconv(.C) void;
+            extern fn glGenVertexArrays(n: GLsizei, arrays: [*c]GLuint) callconv(.C) void;
+            extern fn glBindBuffer(target: GLenum, buffer: GLuint) callconv(.C) void;
+            extern fn glBufferData(target: GLenum, size: GLsizeiptr, data: ?*const c_void, usage: GLenum) callconv(.C) void;
+            extern fn glBufferSubData(GLenum, GLintptr, GLsizeiptr, ?*const c_void) callconv(.C) void;
+
+            extern fn glCreateShader(shader: GLenum) callconv(.C) GLuint;
+            extern fn glShaderSource(shader: GLuint, count: GLsizei, string: *[:0]const GLchar, length: ?*c_int) callconv(.C) void;
+            extern fn glCompileShader(shader: GLuint) callconv(.C) void;
+            extern fn glDeleteShader(GLuint) callconv(.C) void;
+
+            extern fn glCreateProgram() callconv(.C) GLuint;
+            extern fn glDeleteProgram(GLuint) callconv(.C) void;
+            extern fn glAttachShader(program: GLuint, shader: GLuint) callconv(.C) void;
+            extern fn glLinkProgram(program: GLuint) callconv(.C) void;
+            extern fn glGetProgramiv(GLuint, GLenum, [*c]GLint) callconv(.C) void;
+            extern fn glGetProgramInfoLog(GLuint, GLsizei, [*c]GLsizei, [*c]GLchar) callconv(.C) void;
+            extern fn glUseProgram(program: GLuint) callconv(.C) void;
+            extern fn glGetAttribLocation(program: GLuint, name: [*:0]const GLchar) callconv(.C) GLint;
+            extern fn glBindFragDataLocation(program: GLuint, colorNumber: GLuint, name: [*:0]const GLchar) callconv(.C) void;
+            extern fn glVertexAttribDivisor(index: GLuint, divisor: GLuint) callconv(.C) void;
+            extern fn glVertexAttribPointer(index: GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: ?*const c_void) callconv(.C) void;
+            extern fn glBindVertexArray(array: GLuint) callconv(.C) void;
+
+            extern fn glGetShaderiv(shader: GLuint, pname: GLenum, params: *GLint) callconv(.C) void;
+            extern fn glEnableVertexAttribArray(index: GLuint) callconv(.C) void;
+            extern fn glGetShaderInfoLog(shader: GLuint, maxLength: GLsizei, length: *GLsizei, infoLog: [*]GLchar) callconv(.C) void;
+
+            extern fn glGetUniformLocation(shader: GLuint, name: [*:0]const GLchar) callconv(.C) GLint;
+            extern fn glUniform1i(location: GLint, v0: GLint) callconv(.C) void;
+            extern fn glUniform1iv(GLint, GLsizei, [*c]const GLint) callconv(.C) void;
+            extern fn glUniform1f(location: GLint, v0: GLfloat) callconv(.C) void;
+            extern fn glUniform1fv(GLint, GLsizei, [*c]const GLfloat) callconv(.C) void;
+            extern fn glUniform2fv(GLint, GLsizei, [*c]const GLfloat) callconv(.C) void;
+            extern fn glUniform3fv(GLint, GLsizei, [*c]const GLfloat) callconv(.C) void;
+            extern fn glUniform4fv(GLint, GLsizei, [*c]const GLfloat) callconv(.C) void;
+            extern fn glUniform3f(location: GLint, v0: GLfloat, v1: GLfloat, v2: GLfloat) callconv(.C) void;
+            extern fn glUniformMatrix3fv(GLint, GLsizei, GLboolean, [*c]const GLfloat) callconv(.C) void;
+            extern fn glUniformMatrix4fv(location: GLint, count: GLsizei, transpose: GLboolean, value: *const GLfloat) callconv(.C) void;
+            extern fn glUniformMatrix3x2fv(GLint, GLsizei, GLboolean, [*c]const GLfloat) callconv(.C) void;
+
+            extern fn glDrawElements(GLenum, GLsizei, GLenum, ?*const c_void) callconv(.C) void;
+            extern fn glDrawElementsInstanced(GLenum, GLsizei, GLenum, ?*const c_void, GLsizei) callconv(.C) void;
+            extern fn glDrawArrays(GLenum, GLint, GLsizei) callconv(.C) void;
+
+            extern fn glGenFramebuffers(GLsizei, [*c]GLuint) callconv(.C) void;
+            extern fn glDeleteFramebuffers(GLsizei, [*c]const GLuint) callconv(.C) void;
+            extern fn glBindFramebuffer(GLenum, GLuint) callconv(.C) void;
+            extern fn glFramebufferTexture(GLenum, GLenum, GLuint, GLint) callconv(.C) void;
+            extern fn glDrawBuffers(GLsizei, [*c]const GLenum) callconv(.C) void;
+            extern fn glCheckFramebufferStatus(GLenum) callconv(.C) GLenum;
+
+            extern fn glGenRenderbuffers(GLsizei, [*c]GLuint) callconv(.C) void;
+            extern fn glDeleteRenderbuffers(GLsizei, [*c]const GLuint) callconv(.C) void;
+            extern fn glBindRenderbuffer(GLenum, GLuint) callconv(.C) void;
+            extern fn glRenderbufferStorage(GLenum, GLenum, GLsizei, GLsizei) callconv(.C) void;
+            extern fn glFramebufferRenderbuffer(GLenum, GLenum, GLenum, GLuint) callconv(.C) void;
+
+            extern fn glGenTextures(GLsizei, [*c]GLuint) callconv(.C) void;
+            extern fn glDeleteTextures(GLsizei, [*c]const GLuint) callconv(.C) void;
+            extern fn glBindTexture(GLenum, GLuint) callconv(.C) void;
+            extern fn glTexParameteri(GLenum, GLenum, GLint) callconv(.C) void;
+            extern fn glTexParameteriv(GLenum, GLenum, [*c]const GLint) callconv(.C) void;
+            extern fn glTexImage1D(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, ?*const c_void) callconv(.C) void;
+            extern fn glTexImage2D(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, ?*const c_void) callconv(.C) void;
+            extern fn glGenerateMipmap(GLenum) callconv(.C) void;
+            extern fn glActiveTexture(GLenum) callconv(.C) void;
+        };
+        {
+            gl.glEnable = wasmEnv.glEnable;
+            gl.glDisable = wasmEnv.glDisable;
+            gl.glBlendFunc = wasmEnv.glBlendFunc;
+            gl.glBlendFuncSeparate = wasmEnv.glBlendFuncSeparate;
+            gl.glBlendEquationSeparate = wasmEnv.glBlendEquationSeparate;
+            gl.glBlendColor = wasmEnv.glBlendColor;
+            gl.glPolygonMode = wasmEnv.glPolygonMode;
+            gl.glDepthMask = wasmEnv.glDepthMask;
+            gl.glDepthFunc = wasmEnv.glDepthFunc;
+            gl.glStencilFunc = wasmEnv.glStencilFunc;
+            gl.glStencilFuncSeparate = wasmEnv.glStencilFuncSeparate;
+            gl.glStencilMask = wasmEnv.glStencilMask;
+            gl.glStencilMaskSeparate = wasmEnv.glStencilMaskSeparate;
+            gl.glStencilOp = wasmEnv.glStencilOp;
+            gl.glStencilOpSeparate = wasmEnv.glStencilOpSeparate;
+            gl.glColorMask = wasmEnv.glColorMask;
+
+            gl.glViewport = wasmEnv.glViewport;
+            gl.glScissor = wasmEnv.glScissor;
+            gl.glGetString = wasmEnv.glGetString;
+            gl.glGetError = wasmEnv.glGetError;
+            gl.glGetIntegerv = wasmEnv.glGetIntegerv;
+            gl.glClearColor = wasmEnv.glClearColor;
+            gl.glClearStencil = wasmEnv.glClearStencil;
+            gl.glClearDepth = wasmEnv.glClearDepth;
+            gl.glClear = wasmEnv.glClear;
+            gl.glGenBuffers = wasmEnv.glGenBuffers;
+            gl.glDeleteVertexArrays = wasmEnv.glDeleteVertexArrays;
+            gl.glDeleteBuffers = wasmEnv.glDeleteBuffers;
+            gl.glGenVertexArrays = wasmEnv.glGenVertexArrays;
+            gl.glBindBuffer = wasmEnv.glBindBuffer;
+            gl.glBufferData = wasmEnv.glBufferData;
+            gl.glBufferSubData = wasmEnv.glBufferSubData;
+
+            gl.glCreateShader = wasmEnv.glCreateShader;
+            gl.glShaderSource = wasmEnv.glShaderSource;
+            gl.glCompileShader = wasmEnv.glCompileShader;
+            gl.glDeleteShader = wasmEnv.glDeleteShader;
+
+            gl.glCreateProgram = wasmEnv.glCreateProgram;
+            gl.glDeleteProgram = wasmEnv.glDeleteProgram;
+            gl.glAttachShader = wasmEnv.glAttachShader;
+            gl.glLinkProgram = wasmEnv.glLinkProgram;
+            gl.glGetProgramiv = wasmEnv.glGetProgramiv;
+            gl.glGetProgramInfoLog = wasmEnv.glGetProgramInfoLog;
+            gl.glUseProgram = wasmEnv.glUseProgram;
+            gl.glGetAttribLocation = wasmEnv.glGetAttribLocation;
+            gl.glBindFragDataLocation = wasmEnv.glBindFragDataLocation;
+            gl.glVertexAttribDivisor = wasmEnv.glVertexAttribDivisor;
+            gl.glVertexAttribPointer = wasmEnv.glVertexAttribPointer;
+            gl.glBindVertexArray = wasmEnv.glBindVertexArray;
+
+            gl.glGetShaderiv = wasmEnv.glGetShaderiv;
+            gl.glEnableVertexAttribArray = wasmEnv.glEnableVertexAttribArray;
+            gl.glGetShaderInfoLog = wasmEnv.glGetShaderInfoLog;
+
+            gl.glGetUniformLocation = wasmEnv.glGetUniformLocation;
+            gl.glUniform1i = wasmEnv.glUniform1i;
+            gl.glUniform1iv = wasmEnv.glUniform1iv;
+            gl.glUniform1f = wasmEnv.glUniform1f;
+            gl.glUniform1fv = wasmEnv.glUniform1fv;
+            gl.glUniform2fv = wasmEnv.glUniform2fv;
+            gl.glUniform3fv = wasmEnv.glUniform3fv;
+            gl.glUniform4fv = wasmEnv.glUniform4fv;
+            gl.glUniform3f = wasmEnv.glUniform3f;
+            gl.glUniformMatrix3fv = wasmEnv.glUniformMatrix3fv;
+            gl.glUniformMatrix4fv = wasmEnv.glUniformMatrix4fv;
+            gl.glUniformMatrix3x2fv = wasmEnv.glUniformMatrix3x2fv;
+
+            gl.glDrawElements = wasmEnv.glDrawElements;
+            gl.glDrawElementsInstanced = wasmEnv.glDrawElementsInstanced;
+            gl.glDrawArrays = wasmEnv.glDrawArrays;
+
+            gl.glGenFramebuffers = wasmEnv.glGenFramebuffers;
+            gl.glDeleteFramebuffers = wasmEnv.glDeleteFramebuffers;
+            gl.glBindFramebuffer = wasmEnv.glBindFramebuffer;
+            gl.glFramebufferTexture = wasmEnv.glFramebufferTexture;
+            gl.glDrawBuffers = wasmEnv.glDrawBuffers;
+            gl.glCheckFramebufferStatus = wasmEnv.glCheckFramebufferStatus;
+
+            gl.glGenRenderbuffers = wasmEnv.glGenRenderbuffers;
+            gl.glDeleteRenderbuffers = wasmEnv.glDeleteRenderbuffers;
+            gl.glBindRenderbuffer = wasmEnv.glBindRenderbuffer;
+            gl.glRenderbufferStorage = wasmEnv.glRenderbufferStorage;
+            gl.glFramebufferRenderbuffer = wasmEnv.glFramebufferRenderbuffer;
+
+            gl.glGenTextures = wasmEnv.glGenTextures;
+            gl.glDeleteTextures = wasmEnv.glDeleteTextures;
+            gl.glBindTexture = wasmEnv.glBindTexture;
+            gl.glTexParameteri = wasmEnv.glTexParameteri;
+            gl.glTexParameteriv = wasmEnv.glTexParameteriv;
+            gl.glTexImage1D = wasmEnv.glTexImage1D;
+            gl.glTexImage2D = wasmEnv.glTexImage2D;
+            gl.glGenerateMipmap = wasmEnv.glGenerateMipmap;
+            gl.glActiveTexture = wasmEnv.glActiveTexture;
+        }
+        return;
+    }
+
     const lib = switch (std.builtin.os.tag) {
         .linux, .freebsd, .openbsd => "libOpenGL.so.0",
         .windows => "OPENGL32",
